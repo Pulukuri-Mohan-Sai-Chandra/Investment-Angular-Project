@@ -12,12 +12,4 @@ import { InvestmentService } from '../investment-results/investment.service';
   imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent],
 })
 export class AppComponent {
-  annualData?: AnnualData[];
-  invest_data?:InvestmentData;
-  constructor(private investment_service:InvestmentService){}
-
-  handleInvestData(invest_data: InvestmentData) {
-    this.invest_data = invest_data;
-    this.annualData = this.investment_service.getInvestmentData(invest_data);
-  }
 }

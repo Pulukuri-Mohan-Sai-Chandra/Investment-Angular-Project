@@ -1,15 +1,15 @@
 <form action="submit" (ngSubmit)="onSubmit($event)">
     <p><label for="">Initial Investment</label>
-        <input type="number" name="init_investment" id="init_investment" [(ngModel)]="investment_data.init_investment">
+        <input type="number" name="input_initialInvestement" id="input_initialInvestement" [(ngModel)]="input_initialInvestement">
     </p>
     <p> <label for="">Annual Investment</label>
-        <input type="number" name="an_investment" id="an_investment" [(ngModel)]="investment_data.an_investment">
+        <input type="number" name="input_annualInvestment" id="input_annualInvestment" [(ngModel)]="input_annualInvestment">
     </p>
     <p> <label for="">Expected Return</label>
-        <input type="number" name="exp_return" id="exp_return" [(ngModel)]="investment_data.exp_return">
+        <input type="number" name="input_expetedInvestment" id="input_expetedInvestment" [(ngModel)]="input_expetedInvestment">
     </p>
     <p><label for="">Duration</label>
-        <input type="number" name="duration" id="duration" [(ngModel)]="investment_data.duration">
+        <input type="number" name="input_duration" id="input_duration" [(ngModel)]="input_duration">
     </p>
 
     <button>Calculate</button>

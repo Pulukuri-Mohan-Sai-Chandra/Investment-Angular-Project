@@ -12,4 +12,11 @@ export type AnnualData = {
     annualInvestment: number;
     totalInterest: number;
     totalAmountInvested:number;
-  }
+}
+
+export const intialInvestData:InvestmentData = {
+    init_investment:0,
+    an_investment:0,
+    exp_return:0,
+    duration:0,
+}

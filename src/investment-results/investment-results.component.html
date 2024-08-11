@@ -17,10 +17,10 @@
     @for(yr of annualData; track $index){
             <tr>
                 <td>{{yr.year}}</td>
-                <td>{{yr.valueEndOfYear | currency:'USD'}}</td>
-                <td>{{yr.interest | currency:'USD'}}</td>
-                <td>{{yr.totalInterest| currency:'USD'}}</td>
-                <td>{{yr.totalAmountInvested | currency:'USD'}}</td>
+                <td>{{yr.valueEndOfYear | currency:'INR'}}</td>
+                <td>{{yr.interest | currency:'INR'}}</td>
+                <td>{{yr.totalInterest| currency:'INR'}}</td>
+                <td>{{yr.totalAmountInvested | currency:'INR'}}</td>
             </tr>
         }
 }

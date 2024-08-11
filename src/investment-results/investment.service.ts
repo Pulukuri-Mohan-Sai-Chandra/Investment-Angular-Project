@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { InvestmentData } from "../types&Interfaces";
+import { AnnualData, InvestmentData } from "../types&Interfaces";
 
 @Injectable({
     providedIn:'root'
 })
 export class InvestmentService{
+    annualData?:AnnualData[] = [];
     private calculateInvestmentResults(invest_data:InvestmentData) {
-        const annualData = [];
         let initialInvestment = invest_data.init_investment; 
         let expectedReturn = invest_data.exp_return; 
         let duration = invest_data.duration;
@@ -19,7 +19,7 @@ export class InvestmentService{
           investmentValue += interestEarnedInYear + annualInvestment;
           const totalInterest =
             investmentValue - annualInvestment * year - initialInvestment;
-          annualData.push({
+          this.annualData?.push({
             year: year,
             interest: interestEarnedInYear,
             valueEndOfYear: investmentValue,
@@ -29,10 +29,12 @@ export class InvestmentService{
           });
         }
       
-        return annualData;
       }
-      
-    getInvestmentData(data:InvestmentData){
-        return this.calculateInvestmentResults(data);
+    
+    setInvestmentData(data:InvestmentData){
+      this.calculateInvestmentResults(data);
+    }
+    getInvestmentData(){
+        return this.annualData;
     }
 }
