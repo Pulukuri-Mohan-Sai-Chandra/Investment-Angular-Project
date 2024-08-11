@@ -18,6 +18,7 @@ export class UserInputComponent {
   }
   @Output() invest_data = new EventEmitter<InvestmentData>();
   onSubmit(event:any){
+    console.log(this.investment_data)
     this.invest_data.emit({...this.investment_data});
   }
 }
