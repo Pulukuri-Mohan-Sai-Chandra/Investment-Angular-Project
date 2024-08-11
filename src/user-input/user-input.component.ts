@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InvestmentData } from '../types&Interfaces';
 
@@ -10,14 +10,14 @@ import { InvestmentData } from '../types&Interfaces';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  investment_data = {
+  investment_data = signal({
     init_investment:0,
     an_investment:0,
     exp_return:0,
     duration:0
-  }
-  @Output() invest_data = new EventEmitter<InvestmentData>();
+  })
+  invest_data = output<InvestmentData>();
   onSubmit(event:any){
-    this.invest_data.emit({...this.investment_data});
+    this.invest_data.emit({...this.investment_data()});
   }
 }
