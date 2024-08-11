@@ -1,2 +1,4 @@
 
 <app-header/>
+<app-user-input (invest_data)="handleInvestData($event)"/>
+<app-investment-results [annualData]="annualData" [invest_data]="invest_data"/>
