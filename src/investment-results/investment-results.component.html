@@ -1,23 +1,28 @@
-<p *ngIf="annualData?.length else no_data ">Please enter some values and prese "Calculate".</p>
-<ng-template #no_data>
-    <table>
-        <thead>
-            <td>Year</td>
-            <td>Investment Value</td> 
-            <td>Interest(Year)</td>
-            <td>Total Interest</td> 
-            <td>Invested Capital</td>
-        </thead>
-        <tbody>
-        @for(yr of annualData; track $index){
-                <tr>
-                    <td>{{yr.year}}</td>
-                    <td>{{yr.valueEndOfYear | currency:'USD'}}</td>
-                    <td>{{yr.interest | currency:'USD'}}</td>
-                    <td>{{yr.totalInterest| currency:'USD'}}</td>
-                    <td>{{yr.totalAmountInvested | currency:'USD'}}</td>
-                </tr>
-            }
-    
-    </table>
-</ng-template>
+<table>
+@if(annualData== undefined){
+    <tbody>Please enter some values and press "Calculation"</tbody>
+}
+@else if(annualData.length == 0){
+    <tbody>Please enter some values and press "Calculation"</tbody>
+}
+@else {
+    <thead>
+        <td>Year</td>
+        <td>Investment Value</td> 
+        <td>Interest(Year)</td>
+        <td>Total Interest</td> 
+        <td>Invested Capital</td>
+    </thead>
+    <tbody>
+    @for(yr of annualData; track $index){
+            <tr>
+                <td>{{yr.year}}</td>
+                <td>{{yr.valueEndOfYear | currency:'USD'}}</td>
+                <td>{{yr.interest | currency:'USD'}}</td>
+                <td>{{yr.totalInterest| currency:'USD'}}</td>
+                <td>{{yr.totalAmountInvested | currency:'USD'}}</td>
+            </tr>
+        }
+}
+
+</table>

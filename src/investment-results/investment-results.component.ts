@@ -13,6 +13,4 @@ import { CurrencyPipe } from '@angular/common';
 export class InvestmentResultsComponent {
   @Input({required:true}) annualData?:AnnualData[];
   @Input({required:true}) invest_data?:InvestmentData;
-  keys = this.annualData?.keys();
-  Object: any;
 }
