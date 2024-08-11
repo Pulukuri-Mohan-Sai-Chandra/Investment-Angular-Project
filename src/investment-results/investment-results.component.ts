@@ -1,4 +1,4 @@
-import { Component,inject,input,Input, signal} from '@angular/core';
+import { Component,computed,inject,input,Input, signal} from '@angular/core';
 import { AnnualData, InvestmentData } from '../types&Interfaces';
 import { NgFor,NgIf} from '@angular/common';
 import { InvestmentService } from './investment.service';
@@ -11,9 +11,7 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-
-  annualData = signal<AnnualData[]|undefined>(undefined);
   constructor(private investment_service:InvestmentService){
-    this.annualData = investment_service.getInvestmentData();
   }
+  annualData = computed(()=> this.investment_service.annualData());
 }
