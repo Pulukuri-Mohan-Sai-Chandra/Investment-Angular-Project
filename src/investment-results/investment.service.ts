@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { AnnualData, InvestmentData } from "../types&Interfaces";
 
 @Injectable({
     providedIn:'root'
 })
 export class InvestmentService{
-    annualData?:AnnualData[] = [];
+    annualData = signal<AnnualData[]|undefined>(undefined);
     private calculateInvestmentResults(invest_data:InvestmentData) {
         let initialInvestment = invest_data.init_investment; 
         let expectedReturn = invest_data.exp_return; 
@@ -19,14 +19,28 @@ export class InvestmentService{
           investmentValue += interestEarnedInYear + annualInvestment;
           const totalInterest =
             investmentValue - annualInvestment * year - initialInvestment;
-          this.annualData?.push({
-            year: year,
-            interest: interestEarnedInYear,
-            valueEndOfYear: investmentValue,
-            annualInvestment: annualInvestment,
-            totalInterest: totalInterest,
-            totalAmountInvested: initialInvestment + annualInvestment * year,
-          });
+          const tmp:AnnualData[]|undefined = this.annualData(); 
+          if(!tmp){
+            this.annualData.set([{
+              year: year,
+              interest: interestEarnedInYear,
+              valueEndOfYear: investmentValue,
+              annualInvestment: annualInvestment,
+              totalInterest: totalInterest,
+              totalAmountInvested: initialInvestment + annualInvestment * year,
+            }])
+          }
+          else{
+            tmp.push({
+              year: year,
+              interest: interestEarnedInYear,
+              valueEndOfYear: investmentValue,
+              annualInvestment: annualInvestment,
+              totalInterest: totalInterest,
+              totalAmountInvested: initialInvestment + annualInvestment * year,
+            })
+            this.annualData.set(tmp);
+          }
         }
       
       }

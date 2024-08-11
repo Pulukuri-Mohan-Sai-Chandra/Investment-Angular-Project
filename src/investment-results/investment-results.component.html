@@ -1,8 +1,8 @@
 <table>
-@if(annualData== undefined){
+@if(annualData()== undefined){
     <tbody>Please enter some values and press "Calculation"</tbody>
 }
-@else if(annualData.length == 0){
+@else if(annualData()?.length == 0){
     <tbody>Please enter some values and press "Calculation"</tbody>
 }
 @else {
@@ -14,7 +14,7 @@
         <td>Invested Capital</td>
     </thead>
     <tbody>
-    @for(yr of annualData; track $index){
+    @for(yr of annualData(); track $index){
             <tr>
                 <td>{{yr.year}}</td>
                 <td>{{yr.valueEndOfYear | currency:'INR'}}</td>

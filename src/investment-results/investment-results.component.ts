@@ -11,8 +11,8 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.component.css'
 })
 export class InvestmentResultsComponent {
-  annualData?:AnnualData[]
 
+  annualData = signal<AnnualData[]|undefined>(undefined);
   constructor(private investment_service:InvestmentService){
     this.annualData = investment_service.getInvestmentData();
   }
